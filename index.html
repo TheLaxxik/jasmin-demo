@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Salón Jasmín | Kaderníctvo Košice, Dargovských hrdinov</title>
+<meta name="description" content="Salón Jasmín, kaderníctvo na Triede arm. gen. Svobodu 8 v Košiciach. Ukážka webu od Esticode.">
+<meta name="theme-color" content="#2B2E32">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232B2E32'/%3E%3Cpath d='M6 6v20M9 6v20M12 6v20' stroke='%23B07D4F' stroke-width='1'/%3E%3Ctext x='21' y='23' font-size='19' font-family='Georgia,serif' text-anchor='middle' fill='%23F4F5F6'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #FFFFFF;
+    --mist: #F1F2F3;
+    --line: #D6D9DC;
+    --steel: #62676D;
+    --charcoal: #2B2E32;
+    --ink: #1C1E21;
+    --bone: #F4F5F6;
+    --bone-dim: #B9BDC2;
+    --oak: #B07D4F;
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --gutter: 20px;
+    --max: 1180px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  :focus-visible { outline: 2px solid var(--oak); outline-offset: 3px; }
+
+  /* Demo pruh */
+  .demo-strip {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--oak);
+    color: #1A1410;
+    font-size: .8125rem; font-weight: 600; line-height: 1.35;
+    text-align: center;
+    padding: 8px var(--gutter);
+  }
+
+  /* Popisky */
+  .label {
+    font-size: .75rem; font-weight: 500;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--steel);
+  }
+  .on-dark .label { color: var(--bone-dim); }
+
+  /* Tlacidla */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 54px; padding: 0 28px;
+    font-family: var(--sans); font-size: 1rem; font-weight: 600; letter-spacing: .02em;
+    text-decoration: none; border: 1px solid transparent; border-radius: 0;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  .btn-dark { background: var(--charcoal); color: var(--bone); }
+  .btn-dark:hover { background: var(--ink); }
+  .btn-light { background: var(--bone); color: var(--charcoal); }
+  .btn-light:hover { background: #fff; }
+  .btn-line { border-color: currentColor; color: inherit; background: transparent; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .text-link {
+    font-size: .875rem; font-weight: 500; letter-spacing: .02em;
+    text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+  }
+
+  /* Lamely: motiv z dreveneho obkladu v salone, iba dekoracia */
+  .slats {
+    height: 56px;
+    background: repeating-linear-gradient(90deg, var(--oak) 0 7px, #8E6140 7px 9px, transparent 9px 14px);
+    opacity: .9;
+  }
+
+  /* Hlavicka */
+  .site-head { background: var(--charcoal); color: var(--bone); }
+  .site-head .wrap {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: 60px;
+    border-bottom: 1px solid rgba(244,245,246,.14);
+  }
+  .brand {
+    font-family: var(--sans); font-size: .8125rem; font-weight: 600;
+    letter-spacing: .24em; text-transform: uppercase; text-decoration: none;
+  }
+  .nav { display: none; gap: 28px; }
+  .nav a { font-size: .875rem; text-decoration: none; color: var(--bone-dim); }
+  .nav a:hover { color: var(--bone); }
+  .head-call {
+    font-size: .875rem; font-weight: 600; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 14px; border: 1px solid rgba(244,245,246,.5);
+  }
+  .head-call svg { width: 15px; height: 15px; }
+
+  /* Uvod */
+  .hero { background: var(--charcoal); color: var(--bone); }
+  .hero-grid { display: grid; gap: 0; }
+  .hero-text { padding: 28px 0 32px; }
+  .wordmark {
+    font-size: clamp(6.5rem, 34vw, 13rem);
+    line-height: .86; letter-spacing: -.025em;
+    margin: 14px 0 0 0;
+  }
+  .wordmark span { display: block; }
+  .hero-lead { margin-top: 30px; max-width: 30ch; font-size: 1.0625rem; color: #DADDE0; }
+  .rating-chip {
+    display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 20px; font-size: .875rem; color: var(--bone); text-decoration: none;
+  }
+  .rating-chip strong { font-weight: 600; }
+  .rating-chip .muted { color: var(--bone-dim); }
+  .stars { position: relative; display: inline-block; font-size: 1rem; letter-spacing: 2px; line-height: 1; color: rgba(244,245,246,.25); }
+  .stars::before { content: "★★★★★"; }
+  .stars i { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; color: var(--oak); font-style: normal; }
+  .stars i::before { content: "★★★★★"; }
+  .hero-cta { margin-top: 26px; display: grid; gap: 10px; }
+  .hero-cta .btn { width: 100%; }
+  .hero-cta .sub { font-size: .875rem; color: var(--bone-dim); text-align: center; }
+  .hero-cta .sub a { color: var(--bone); font-weight: 600; text-decoration: none; }
+  .hero-photo { margin: 0 calc(var(--gutter) * -1); position: relative; }
+  .hero-photo img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 72%; }
+  .hero-photo figcaption {
+    position: absolute; left: var(--gutter); bottom: 14px;
+    font-size: .6875rem; letter-spacing: .2em; text-transform: uppercase; color: #fff;
+    text-shadow: 0 1px 8px rgba(0,0,0,.6);
+  }
+
+  /* Sekcie */
+  section { scroll-margin-top: 40px; }
+  .sec { padding: 72px 0; }
+  .sec-head { display: grid; gap: 14px; margin-bottom: 36px; }
+  .sec-title { font-size: clamp(2.5rem, 10vw, 3.5rem); line-height: 1.02; letter-spacing: -.01em; }
+  .sec-intro { color: var(--steel); max-width: 52ch; }
+  .on-dark { background: var(--charcoal); color: var(--bone); }
+  .on-dark .sec-intro { color: var(--bone-dim); }
+  .band { background: var(--mist); }
+
+  /* O salone */
+  .about-grid { display: grid; gap: 44px; }
+  .praise { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .praise li {
+    font-family: var(--serif); font-size: 2rem; line-height: 1.15;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .praise li small { font-family: var(--sans); font-size: .75rem; letter-spacing: .2em; color: var(--steel); min-width: 1.6em; }
+  .praise-note { margin-top: 14px; font-size: .9375rem; color: var(--steel); }
+  .score { display: grid; gap: 6px; padding: 28px 24px; background: var(--mist); }
+  .score-num { font-family: var(--serif); font-size: 6.5rem; line-height: .9; letter-spacing: -.02em; }
+  .score .stars { color: rgba(43,46,50,.18); font-size: 1.25rem; }
+  .score p { color: var(--steel); }
+  .score .text-link { margin-top: 10px; justify-self: start; color: var(--ink); }
+
+  /* Pred a po */
+  .ba-block { margin-top: 64px; }
+  .ba-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+  .ba-head h3 { font-size: 2.25rem; line-height: 1.05; }
+  .ba {
+    position: relative; width: 100%; max-width: 520px;
+    aspect-ratio: 688 / 1034; overflow: hidden; background: var(--mist);
+    user-select: none; -webkit-user-select: none; touch-action: pan-y;
+  }
+  .ba-layer { position: absolute; inset: 0; overflow: hidden; }
+  .ba-layer img {
+    position: absolute; top: -.774%; width: 203.49%; max-width: none; height: auto !important;
+  }
+  .ba-after img { left: -102.47%; }
+  .ba-before img { left: -1.163%; }
+  .ba-before { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
+  .ba-line {
+    position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 2px; margin-left: -1px;
+    background: #fff; pointer-events: none;
+  }
+  .ba-knob {
+    position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px;
+    background: #fff; color: var(--charcoal); display: grid; place-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  .ba-knob svg { width: 22px; height: 22px; }
+  .ba-tag {
+    position: absolute; top: 12px; padding: 5px 10px;
+    font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+    background: rgba(28,30,33,.78); color: #fff; pointer-events: none;
+  }
+  .ba-tag.pred { left: 12px; }
+  .ba-tag.po { right: 12px; }
+  .ba input[type=range] {
+    position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+    opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none;
+  }
+  .ba-thumbs { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px; }
+  .ba-thumbs button {
+    flex: none; width: 64px; height: 64px; padding: 0; border: 1px solid var(--line); background: var(--mist);
+    overflow: hidden; cursor: pointer; position: relative; border-radius: 0;
+  }
+  .ba-thumbs button img { position: absolute; top: 50%; left: -101%; width: 202%; height: auto; max-width: none; transform: translateY(-50%); }
+  .ba-thumbs button[aria-pressed=true] { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+  .ba-src { margin-top: 12px; font-size: .8125rem; color: var(--steel); }
+  .ba-hint { font-size: .8125rem; color: var(--steel); }
+
+  /* Cennik */
+  .sample-note {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 16px; margin-bottom: 36px;
+    border: 1px dashed var(--charcoal); background: var(--canvas);
+    font-size: .9375rem; font-weight: 600;
+  }
+  .sample-note svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+  .price-groups { display: grid; gap: 40px; }
+  .price-group h3 { font-size: 1.75rem; line-height: 1.1; margin-bottom: 10px; }
+  .price-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--charcoal); }
+  .price-list li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .price-list .p { font-size: .8125rem; color: var(--steel); white-space: nowrap; }
+  .price-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+  /* Hodiny */
+  .hours { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(244,245,246,.22); max-width: 560px; }
+  .hours li {
+    display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+    padding: 15px 0; border-bottom: 1px solid rgba(244,245,246,.22);
+    font-size: 1.0625rem;
+  }
+  .hours .t { font-variant-numeric: tabular-nums; }
+  .hours li.today { color: #fff; }
+  .hours li.today .d::after {
+    content: "dnes"; margin-left: 10px; padding: 2px 8px; vertical-align: 2px;
+    font-size: .6875rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    background: var(--oak); color: #1A1410;
+  }
+  .hours li:not(.today) { color: var(--bone-dim); }
+  .hours-note { margin-top: 18px; color: var(--bone-dim); font-size: .9375rem; max-width: 46ch; }
+
+  /* Mapa */
+  .map-frame { position: relative; width: 100%; aspect-ratio: 4 / 5; background: var(--mist); border: 1px solid var(--line); }
+  .map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(.35); }
+  .addr { display: grid; gap: 4px; margin-top: 22px; }
+  .addr strong { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.1; }
+  .addr span { color: var(--steel); }
+  .map-actions { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Kontakt */
+  .contact-phone {
+    display: block; font-family: var(--serif); font-size: clamp(3rem, 15vw, 6rem);
+    line-height: 1; letter-spacing: -.01em; text-decoration: none; margin: 8px 0 26px;
+  }
+  .contact-list { list-style: none; margin: 34px 0 0; padding: 0; border-top: 1px solid rgba(244,245,246,.22); }
+  .contact-list li { display: grid; gap: 2px; padding: 16px 0; border-bottom: 1px solid rgba(244,245,246,.22); }
+  .contact-list .k { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--bone-dim); }
+  .contact-list a { text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .site-foot {
+    background: var(--ink); color: var(--bone-dim); font-size: .8125rem;
+    padding: 22px 0 calc(96px + env(safe-area-inset-bottom));
+  }
+  .site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+  /* Mobilna lista s objednanim */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.96); border-top: 1px solid var(--line);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    transform: translateY(110%); transition: transform .25s ease;
+  }
+  .dock.show { transform: none; }
+  .dock .btn { width: 100%; }
+  .dock .btn small { font-weight: 500; opacity: .8; font-size: .875rem; }
+
+  @media (min-width: 760px) {
+    :root { --gutter: 40px; }
+    .nav { display: flex; }
+    .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: stretch; }
+    .hero-text { padding: 56px 0 64px; align-self: center; }
+    .wordmark { font-size: clamp(8rem, 15vw, 13.5rem); }
+    .hero-cta { grid-template-columns: auto 1fr; align-items: center; gap: 22px; }
+    .hero-cta .btn { width: auto; }
+    .hero-cta .sub { text-align: left; }
+    .hero-photo { margin: 0; }
+    .hero-photo img { height: 100%; aspect-ratio: auto; min-height: 560px; }
+    .sec { padding: 112px 0; }
+    .about-grid { grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: start; }
+    .ba-wrap { display: grid; grid-template-columns: minmax(0, 520px) 1fr; gap: 48px; align-items: start; }
+    .ba-aside { padding-top: 8px; }
+    .price-groups { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .map-frame { aspect-ratio: 4 / 3; }
+    .dock { display: none; }
+    .site-foot { padding-bottom: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-strip" role="note">Ukážka webu pre Salón Jasmín, návrh od Esticode, nie je zverejnený.</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#uvod">Salón Jasmín</a>
+    <nav class="nav" aria-label="Hlavná navigácia">
+      <a href="#o-salone">O salóne</a>
+      <a href="#cennik">Cenník</a>
+      <a href="#hodiny">Otváracie hodiny</a>
+      <a href="#mapa">Kde nás nájdete</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="head-call" href="tel:+421948379867" aria-label="Zavolať do salónu 0948 379 867">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      Zavolať
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="uvod">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="label">Kaderníctvo · Košice</p>
+        <h1 class="wordmark"><span>Salón</span><span>Jasmín</span></h1>
+        <p class="hero-lead">Kaderníctvo na Triede arm. gen. Svobodu 8. Termín si dohodnete jedným telefonátom.</p>
+        <a class="rating-chip" href="#o-salone">
+          <span class="stars" aria-hidden="true"><i style="width:92%"></i></span>
+          <span><strong>4,6</strong> <span class="muted">z 52 recenzií na Google Maps</span></span>
+        </a>
+        <div class="hero-cta">
+          <a class="btn btn-light" href="tel:+421948379867">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            Objednať sa
+          </a>
+          <p class="sub">alebo zavolajte na <a href="tel:+421948379867">0948 379 867</a></p>
+        </div>
+      </div>
+      <figure class="hero-photo" style="margin-block:0">
+        <img src="img/salon-interier.jpg" width="1080" height="1440" alt="Interiér Salónu Jasmín: kadernícke kreslá pri stene z dreveného obkladu, umývací box a sušiak" fetchpriority="high">
+        <figcaption>Salón Jasmín, interiér</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec" id="o-salone">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="sec-head">
+            <p class="label">O salóne</p>
+            <h2 class="sec-title">Za čo salón chvália zákazníci</h2>
+          </div>
+          <ul class="praise">
+            <li><small>01</small>Príjemné prostredie</li>
+            <li><small>02</small>Milý prístup</li>
+            <li><small>03</small>Krásne účesy</li>
+          </ul>
+          <p class="praise-note">Súhrn z recenzií zákazníkov na Google Maps.</p>
+        </div>
+        <aside class="score" aria-label="Hodnotenie na Google Maps">
+          <p class="label">Google Maps</p>
+          <span class="score-num">4,6</span>
+          <span class="stars" aria-hidden="true"><i style="width:92%"></i></span>
+          <p>Na Google Maps 4,6 z 52 recenzií.</p>
+          <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Sal%C3%B3n+Jasm%C3%ADn+Trieda+arm.+gen.+Svobodu+8+Ko%C5%A1ice" target="_blank" rel="noopener">Pozrieť recenzie na Google Maps</a>
+        </aside>
+      </div>
+
+      <div class="ba-block">
+        <div class="ba-wrap">
+          <div>
+            <div class="ba-head">
+              <h3>Pred a po</h3>
+              <span class="ba-hint">Potiahnite posuvník</span>
+            </div>
+            <div class="ba" id="ba" style="--x:50%">
+              <div class="ba-layer ba-after"><img id="ba-after" src="img/pred-po-hneda-bob.jpg" width="1400" height="1050" alt="Po: účes po návšteve salónu"></div>
+              <div class="ba-layer ba-before"><img id="ba-before" src="img/pred-po-hneda-bob.jpg" width="1400" height="1050" alt="Pred: vlasy pred návštevou salónu"></div>
+              <div class="ba-line"><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div></div>
+              <span class="ba-tag pred">Pred</span>
+              <span class="ba-tag po">Po</span>
+              <input type="range" min="0" max="100" value="50" aria-label="Porovnanie pred a po">
+            </div>
+            <div class="ba-thumbs" role="group" aria-label="Vyberte porovnanie">
+              <button type="button" aria-pressed="true" data-src="img/pred-po-hneda-bob.jpg" aria-label="Porovnanie 1"><img src="img/pred-po-hneda-bob.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/pred-po-dlhe-rovne.jpg" aria-label="Porovnanie 2"><img src="img/pred-po-dlhe-rovne.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/pred-po-blond-2.jpg" aria-label="Porovnanie 3"><img src="img/pred-po-blond-2.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/pred-po-tmava.jpg" aria-label="Porovnanie 4"><img src="img/pred-po-tmava.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/pred-po-blond-1.jpg" aria-label="Porovnanie 5"><img src="img/pred-po-blond-1.jpg" alt="" loading="lazy"></button>
+            </div>
+          </div>
+          <div class="ba-aside">
+            <p class="sec-intro">Fotky práce salónu zo stránky Salónu Jasmín na Facebooku. Na webe ich môžete pridávať priebežne, aby noví zákazníci videli, čo ich čaká.</p>
+            <p class="ba-src">Zdroj fotiek: <a class="text-link" href="https://www.facebook.com/p/Sal%C3%B3n-Jasm%C3%ADn-100066542241533" target="_blank" rel="noopener">Facebook Salón Jasmín</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="slats" aria-hidden="true"></div>
+
+  <section class="sec band" id="cennik">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cenník</p>
+        <h2 class="sec-title">Služby</h2>
+      </div>
+      <p class="sample-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>
+        Ukážkový cenník, doplníme vaše služby a ceny
+      </p>
+      <div class="price-groups">
+        <div class="price-group">
+          <h3>Strih</h3>
+          <ul class="price-list">
+            <li><span>Dámsky strih</span><span class="p">doplníme</span></li>
+            <li><span>Pánsky strih</span><span class="p">doplníme</span></li>
+            <li><span>Detský strih</span><span class="p">doplníme</span></li>
+            <li><span>Zastrihnutie ofiny</span><span class="p">doplníme</span></li>
+          </ul>
+        </div>
+        <div class="price-group">
+          <h3>Farbenie</h3>
+          <ul class="price-list">
+            <li><span>Farbenie odrastov</span><span class="p">doplníme</span></li>
+            <li><span>Farbenie celých vlasov</span><span class="p">doplníme</span></li>
+            <li><span>Melír</span><span class="p">doplníme</span></li>
+            <li><span>Balayage</span><span class="p">doplníme</span></li>
+          </ul>
+        </div>
+        <div class="price-group">
+          <h3>Úprava a starostlivosť</h3>
+          <ul class="price-list">
+            <li><span>Umytie a fúkanie</span><span class="p">doplníme</span></li>
+            <li><span>Regeneračná kúra</span><span class="p">doplníme</span></li>
+            <li><span>Spoločenský účes</span><span class="p">doplníme</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-cta">
+        <a class="btn btn-dark" href="tel:+421948379867">Objednať sa</a>
+        <span class="ba-hint">Cenu a čas vám radi povieme pri objednaní.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-dark" id="hodiny">
+    <div class="wrap split">
+      <div class="sec-head">
+        <p class="label">Otváracie hodiny</p>
+        <h2 class="sec-title">Kedy sme tu pre vás</h2>
+      </div>
+      <div>
+        <ul class="hours" id="hours">
+          <li data-day="1"><span class="d">Pondelok</span><span class="t">8:00 – 18:00</span></li>
+          <li data-day="2"><span class="d">Utorok</span><span class="t">8:00 – 18:00</span></li>
+          <li data-day="3"><span class="d">Streda</span><span class="t">8:00 – 18:00</span></li>
+          <li data-day="4"><span class="d">Štvrtok</span><span class="t">8:00 – 18:00</span></li>
+          <li data-day="5"><span class="d">Piatok</span><span class="t">8:00 – 18:00</span></li>
+          <li data-day="6"><span class="d">Sobota</span><span class="t">na objednávku</span></li>
+        </ul>
+        <p class="hours-note">Na sobotu sa objednáte telefonicky vopred.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="mapa">
+    <div class="wrap split">
+      <div>
+        <div class="sec-head">
+          <p class="label">Kde nás nájdete</p>
+          <h2 class="sec-title">Dargovských hrdinov</h2>
+        </div>
+        <div class="addr">
+          <strong>Trieda arm. gen. Svobodu 8</strong>
+          <span>040 22 Košice</span>
+        </div>
+        <div class="map-actions">
+          <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Trieda+arm.+gen.+Svobodu+8%2C+040+22+Ko%C5%A1ice" target="_blank" rel="noopener">Navigovať</a>
+        </div>
+      </div>
+      <div class="map-frame" style="margin-top:28px">
+        <iframe title="Mapa: Trieda arm. gen. Svobodu 8, Košice" src="https://www.google.com/maps?q=Trieda+arm.+gen.+Svobodu+8,+040+22+Ko%C5%A1ice&amp;hl=sk&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-dark" id="kontakt">
+    <div class="wrap split">
+      <div>
+        <p class="label">Kontakt</p>
+        <a class="contact-phone" href="tel:+421948379867">0948 379 867</a>
+        <a class="btn btn-light" href="tel:+421948379867">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          Objednať sa
+        </a>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Adresa</span><span>Trieda arm. gen. Svobodu 8, 040 22 Košice</span></li>
+        <li><span class="k">Telefón</span><a href="tel:+421948379867">0948 379 867</a></li>
+        <li><span class="k">Facebook</span><a href="https://www.facebook.com/p/Sal%C3%B3n-Jasm%C3%ADn-100066542241533" target="_blank" rel="noopener">Salón Jasmín na Facebooku</a></li>
+        <li><span class="k">Hodiny</span><span>Po až Pi 8:00 – 18:00, So na objednávku</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Salón Jasmín, kaderníctvo, Košice</p>
+    <p>Ukážka webu · Esticode</p>
+  </div>
+</footer>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <a class="btn btn-dark" href="tel:+421948379867" tabindex="-1">Objednať sa <small>0948 379 867</small></a>
+</div>
+
+<script>
+  (function () {
+    // Porovnanie pred a po
+    var ba = document.getElementById('ba');
+    var range = ba.querySelector('input[type=range]');
+    function setX(v) { ba.style.setProperty('--x', v + '%'); }
+    range.addEventListener('input', function () { setX(range.value); });
+    var before = document.getElementById('ba-before');
+    var after = document.getElementById('ba-after');
+    document.querySelectorAll('.ba-thumbs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.ba-thumbs button').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+        b.setAttribute('aria-pressed', 'true');
+        before.src = after.src = b.dataset.src;
+        range.value = 50; setX(50);
+      });
+    });
+
+    // Dnesny den v hodinach
+    var d = new Date().getDay();
+    var row = document.querySelector('#hours li[data-day="' + d + '"]');
+    if (row) row.classList.add('today');
+
+    // Mobilna lista sa ukaze az po prejdeni uvodu
+    var dock = document.getElementById('dock');
+    var heroCta = document.querySelector('.hero-cta');
+    var contact = document.getElementById('kontakt');
+    if ('IntersectionObserver' in window) {
+      var heroVisible = true, contactVisible = false;
+      function upd() {
+        var show = !heroVisible && !contactVisible;
+        dock.classList.toggle('show', show);
+        dock.setAttribute('aria-hidden', show ? 'false' : 'true');
+        dock.querySelector('a').tabIndex = show ? 0 : -1;
+      }
+      new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting || e[0].boundingClientRect.top > 0; upd(); }).observe(heroCta);
+      new IntersectionObserver(function (e) { contactVisible = e[0].isIntersecting; upd(); }).observe(contact);
+    }
+  })();
+</script>
+</body>
+</html>
