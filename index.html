@@ -138,7 +138,7 @@
   .hero-cta .sub { font-size: .875rem; color: var(--bone-dim); text-align: center; }
   .hero-cta .sub a { color: var(--bone); font-weight: 600; text-decoration: none; }
   .hero-photo { margin: 0 calc(var(--gutter) * -1); position: relative; }
-  .hero-photo img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 72%; }
+  .hero-photo img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 50%; }
   .hero-photo figcaption {
     position: absolute; left: var(--gutter); bottom: 14px;
     font-size: .6875rem; letter-spacing: .2em; text-transform: uppercase; color: #fff;
@@ -180,40 +180,13 @@
     aspect-ratio: 688 / 1034; overflow: hidden; background: var(--mist);
     user-select: none; -webkit-user-select: none; touch-action: pan-y;
   }
-  .ba-layer { position: absolute; inset: 0; overflow: hidden; }
-  .ba-layer img {
-    position: absolute; top: -.774%; width: 203.49%; max-width: none; height: auto !important;
-  }
-  .ba-after img { left: -102.47%; }
-  .ba-before img { left: -1.163%; }
-  .ba-before { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
-  .ba-line {
-    position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 2px; margin-left: -1px;
-    background: #fff; pointer-events: none;
-  }
-  .ba-knob {
-    position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px;
-    background: #fff; color: var(--charcoal); display: grid; place-items: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,.25);
-  }
-  .ba-knob svg { width: 22px; height: 22px; }
-  .ba-tag {
-    position: absolute; top: 12px; padding: 5px 10px;
-    font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
-    background: rgba(28,30,33,.78); color: #fff; pointer-events: none;
-  }
-  .ba-tag.pred { left: 12px; }
-  .ba-tag.po { right: 12px; }
-  .ba input[type=range] {
-    position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
-    opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none;
-  }
+  #ba-main { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ba-thumbs { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px; }
   .ba-thumbs button {
     flex: none; width: 64px; height: 64px; padding: 0; border: 1px solid var(--line); background: var(--mist);
     overflow: hidden; cursor: pointer; position: relative; border-radius: 0;
   }
-  .ba-thumbs button img { position: absolute; top: 50%; left: -101%; width: 202%; height: auto; max-width: none; transform: translateY(-50%); }
+  .ba-thumbs button img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ba-thumbs button[aria-pressed=true] { outline: 2px solid var(--charcoal); outline-offset: 2px; }
   .ba-src { margin-top: 12px; font-size: .8125rem; color: var(--steel); }
   .ba-hint { font-size: .8125rem; color: var(--steel); }
@@ -314,7 +287,7 @@
 </head>
 <body>
 
-<div class="demo-strip" role="note">Ukážka webu pre Salón Jasmín, návrh od Esticode, nie je zverejnený.</div>
+<div class="demo-strip" role="note">Ukážka webu pre Salón Jasmín, návrh od Esticode, nie je zverejnený. Fotky sú ilustračné.</div>
 
 <header class="site-head">
   <div class="wrap">
@@ -353,8 +326,8 @@
         </div>
       </div>
       <figure class="hero-photo" style="margin-block:0">
-        <img src="img/salon-interier.jpg" width="1080" height="1440" alt="Interiér Salónu Jasmín: kadernícke kreslá pri stene z dreveného obkladu, umývací box a sušiak" fetchpriority="high">
-        <figcaption>Salón Jasmín, interiér</figcaption>
+        <img src="img/salon-interier.jpg" width="1080" height="1440" alt="Kadernícke kreslo pred dreveným stolíkom s okrúhlym zrkadlom" fetchpriority="high">
+        <figcaption>Ilustračná fotka interiéru</figcaption>
       </figure>
     </div>
   </section>
@@ -387,28 +360,23 @@
         <div class="ba-wrap">
           <div>
             <div class="ba-head">
-              <h3>Pred a po</h3>
-              <span class="ba-hint">Potiahnite posuvník</span>
+              <h3>Účesy</h3>
+              <span class="ba-hint">Ilustračné fotky</span>
             </div>
-            <div class="ba" id="ba" style="--x:50%">
-              <div class="ba-layer ba-after"><img id="ba-after" src="img/pred-po-hneda-bob.jpg" width="1400" height="1050" alt="Po: účes po návšteve salónu"></div>
-              <div class="ba-layer ba-before"><img id="ba-before" src="img/pred-po-hneda-bob.jpg" width="1400" height="1050" alt="Pred: vlasy pred návštevou salónu"></div>
-              <div class="ba-line"><div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div></div>
-              <span class="ba-tag pred">Pred</span>
-              <span class="ba-tag po">Po</span>
-              <input type="range" min="0" max="100" value="50" aria-label="Porovnanie pred a po">
+            <div class="ba" id="ba">
+              <img id="ba-main" src="img/uces-1.jpg" width="900" height="1353" alt="Tmavý bob s rovným strihom, pohľad zozadu">
             </div>
-            <div class="ba-thumbs" role="group" aria-label="Vyberte porovnanie">
-              <button type="button" aria-pressed="true" data-src="img/pred-po-hneda-bob.jpg" aria-label="Porovnanie 1"><img src="img/pred-po-hneda-bob.jpg" alt="" loading="lazy"></button>
-              <button type="button" aria-pressed="false" data-src="img/pred-po-dlhe-rovne.jpg" aria-label="Porovnanie 2"><img src="img/pred-po-dlhe-rovne.jpg" alt="" loading="lazy"></button>
-              <button type="button" aria-pressed="false" data-src="img/pred-po-blond-2.jpg" aria-label="Porovnanie 3"><img src="img/pred-po-blond-2.jpg" alt="" loading="lazy"></button>
-              <button type="button" aria-pressed="false" data-src="img/pred-po-tmava.jpg" aria-label="Porovnanie 4"><img src="img/pred-po-tmava.jpg" alt="" loading="lazy"></button>
-              <button type="button" aria-pressed="false" data-src="img/pred-po-blond-1.jpg" aria-label="Porovnanie 5"><img src="img/pred-po-blond-1.jpg" alt="" loading="lazy"></button>
+            <div class="ba-thumbs" role="group" aria-label="Vyberte fotku">
+              <button type="button" aria-pressed="true" data-src="img/uces-1.jpg" data-alt="Tmavý bob s rovným strihom, pohľad zozadu" aria-label="Fotka 1"><img src="img/uces-1.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/uces-2.jpg" data-alt="Dlhé blond vlasy s jemnými vlnami, pohľad zozadu" aria-label="Fotka 2"><img src="img/uces-2.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/uces-3.jpg" data-alt="Dlhé vlny s prechodom z tmavej do popolavej blond" aria-label="Fotka 3"><img src="img/uces-3.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/uces-4.jpg" data-alt="Strieborno-sivé kučery, pohľad zozadu" aria-label="Fotka 4"><img src="img/uces-4.jpg" alt="" loading="lazy"></button>
+              <button type="button" aria-pressed="false" data-src="img/uces-5.jpg" data-alt="Dlhé medové vlny pri ružovej stene" aria-label="Fotka 5"><img src="img/uces-5.jpg" alt="" loading="lazy"></button>
             </div>
           </div>
           <div class="ba-aside">
-            <p class="sec-intro">Fotky práce salónu zo stránky Salónu Jasmín na Facebooku. Na webe ich môžete pridávať priebežne, aby noví zákazníci videli, čo ich čaká.</p>
-            <p class="ba-src">Zdroj fotiek: <a class="text-link" href="https://www.facebook.com/p/Sal%C3%B3n-Jasm%C3%ADn-100066542241533" target="_blank" rel="noopener">Facebook Salón Jasmín</a></p>
+            <p class="sec-intro">Sem pôjdu fotky vašej práce, napríklad z vášho Facebooku. Na webe ich môžete pridávať priebežne, aby noví zákazníci videli, čo ich čaká.</p>
+            <p class="ba-src">Fotky v ukážke sú ilustračné.</p>
           </div>
         </div>
       </div>
@@ -536,19 +504,14 @@
 
 <script>
   (function () {
-    // Porovnanie pred a po
-    var ba = document.getElementById('ba');
-    var range = ba.querySelector('input[type=range]');
-    function setX(v) { ba.style.setProperty('--x', v + '%'); }
-    range.addEventListener('input', function () { setX(range.value); });
-    var before = document.getElementById('ba-before');
-    var after = document.getElementById('ba-after');
+    // Galeria ucesov
+    var main = document.getElementById('ba-main');
     document.querySelectorAll('.ba-thumbs button').forEach(function (b) {
       b.addEventListener('click', function () {
         document.querySelectorAll('.ba-thumbs button').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
         b.setAttribute('aria-pressed', 'true');
-        before.src = after.src = b.dataset.src;
-        range.value = 50; setX(50);
+        main.src = b.dataset.src;
+        main.alt = b.dataset.alt;
       });
     });
 

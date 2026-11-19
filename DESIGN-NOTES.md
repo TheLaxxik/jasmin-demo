@@ -50,3 +50,17 @@ Jedna koláž vyradená, lebo v pozadí bol rozpoznateľný iný človek.
 ## Neoverené
 
 Otváracie hodiny podľa oma.sk. Cenník ukážkový, bez cien.
+
+## Fotky (aktualizácia 19. 11. 2026)
+
+Pôvodné fotky podniku nahradené ilustračnými fotkami z Unsplash (licencia Unsplash, free). Na webe je to uvedené v demo pruhu.
+Posuvník pred a po bol nahradený jednoduchou galériou účesov, lebo stock fotky nie sú koláže pred a po.
+
+| Súbor | Unsplash (images.unsplash.com/photo-…) |
+|---|---|
+| img/salon-interier.jpg | photo-1790009419892-f6f3fd516fb2 |
+| img/uces-1.jpg | photo-1580663232236-5d18d5b02c5a |
+| img/uces-2.jpg | photo-1554519934-e32b1629d9ee |
+| img/uces-3.jpg | photo-1605980766335-d3a41c7332a1 |
+| img/uces-4.jpg | photo-1605980625600-88b46abafa8d |
+| img/uces-5.jpg | photo-1522337360788-8b13dee7a37e |
